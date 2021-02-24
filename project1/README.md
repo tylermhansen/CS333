@@ -2013,7 +2013,7 @@ Size of CarlsenNakamura is 26
 
 It is readily apparent that bytes 0-22 are allocated for the `char` array `CarlsenNakamura.opening`, byte `23` holds `57` which is "W" in hexadecimal -- so it is holding `CarlsenNakammura.side`. Lastly, we find that bytes `24` and `25` are holding `CarlsenNakamura.num_pawns`.
 
-What is interesting is that the `sizeof()` call returns `26`. Ying said in class that it snaps to even multiples of the largest data type; since it is a `short` in this case, everything is a multiple of 2.
+What is interesting is that **(a)** the `sizeof()` call returns `26`. Ying said in class that it snaps to even multiples of the largest data type; since it is a `short` in this case, everything is a multiple of 2. So there is a buffer to make sure that `sizeof()` is always even, but there aren't any gaps between the different variables of the struct.
 
 ##### Task 5:
 
@@ -2029,18 +2029,48 @@ So, it looks like my compiler throws an illegal instruction error in the event t
 
 ##### Imperative / Object-Oriented Language: Ruby
 
-Developed in the mid-1990s, Ruby was designed by its creator Yukihiro “Matz” Matsumoto as a combination of his favorite languages to "form a new language that balanced functional programming with imperative programming." One interesting aspect of Ruby is that everything (including primitive types such as numbers) is an object, and so everything can have instance variables and methods. Ruby, while positioning itself as a general-purpose language has many applications like data analysis, prototyping, and proof of concepts. However, it is most often used in web applications; the largest implementation of Ruby is Ruby on Rails, the development framework built with Ruby. Ruby is a compiled language just like how Java works. Ruby syntax itself is not immediately compiled down to native machine code; instead, it is compiled into a set of bytecode instructions that are interpreted by a virtual machine. Ruby is completely open source and always free to copy, modify, and distrubute.
+Developed in the mid-1990s, Ruby was designed by its creator Yukihiro “Matz” Matsumoto as a combination of his favorite languages to "form a new language that balanced functional programming with imperative programming." One interesting aspect of Ruby is that everything (including primitive types such as numbers) is an object, and so everything can have instance variables and methods. Ruby, while positioning itself as a general-purpose language has many applications like data analysis, prototyping, and proof of concepts. However, it is most often used in web applications; the largest implementation of Ruby is Ruby on Rails, the development framework built with Ruby. Ruby is a compiled language just like how Java works. Ruby syntax itself is not immediately compiled down to native machine code; instead, it is compiled into a set of bytecode instructions that are interpreted by a virtual machine. Ruby is completely open source and always free to copy, modify, and distribute.
 
 ##### Functional / Logic Language: Haskell
 
-Created in 1990, Haskell is purely functional programming language with some interesting properties: its statically typed, it has type inference, its "lazy" (meaning functions don't evaluate their arguments, so chains of functions can be fused together easily), it has concurrency and there are tons of packages available. From the Huffington Post, "While Haskell is a general purpose language that can be used in any domain and use case, it is ideally suited for proprietary business logic and data analysis, fast prototyping and enhancing existing software environments with correct code, performance and scalability." It has a native code compiler that is cross-platform and open source; open source contribution to Haskell comes by way of packages.
+Created in 1990, Haskell is a purely functional programming language with some interesting properties: its statically typed, it has type inference, its "lazy" (meaning functions don't evaluate their arguments, so chains of functions can be fused together easily), it has concurrency and there are tons of packages available. From the Huffington Post, "While Haskell is a general purpose language that can be used in any domain and use case, it is ideally suited for proprietary business logic and data analysis, fast prototyping and enhancing existing software environments with correct code, performance and scalability." It has a native code compiler that is cross-platform and open source; open source contribution to Haskell comes by way of packages.
 
 ##### Special Purpose Language: MySQL
 
-From their website: "MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, used by high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more." It's secure, scaleable, and fast. MySQL is free and open-source software under the terms of the GNU General Public License, and is also available under a variety of proprietary licenses. MySQL was owned and sponsored by the Swedish company MySQL AB, which was bought by Oracle. MySQL was originally released on May 23rd, 1995. DBMS (database management systems) are slightly different in that the "compilation" is called "optimization" and an "execution plan" is sent to the database for, well, execution. The execution yields the result.
+From their website: "MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, used by high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more." It's secure, scalable, and fast. MySQL is free and open-source software under the terms of the GNU General Public License, and is also available under a variety of proprietary licenses. MySQL was owned and sponsored by the Swedish company MySQL AB, which was bought by Oracle. MySQL was originally released on May 23rd, 1995. DBMS (database management systems) are slightly different in that the "compilation" is called "optimization" and an "execution plan" is sent to the database for, well, execution. The execution yields the result.
 
-#### Extensions to do:
+#### Extensions:
 
-- Write up pararaphs on not just the three required languages for this project (one from each category) but also two additional so write them for Rust, Go, and then three more...
-- Find the float where you add one and get the same result back
-- Write the shortest program to generate a bus error
+##### Rust
+
+An imperative language, Rust is "blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages." Developed very recently in 2010, Rust's type system supports a mechanism similar to type classes, called "traits," inspired directly by the Haskell language. Performance of idiomatic Rust is comparable to the performance of idiomatic C++. Developers are using Rust to create a wide range of new software applications, such as game engines, operating systems, file systems, browser components and simulation engines for virtual reality. Rust is an open-source and compiled systems programming language.
+
+##### Go
+
+Go is an open-source, statically typed, compiled programming language designed at Google and released in 2012. Go is syntactically similar to C, but with memory safety, garbage collection, structural typing, and CSP-style concurrency. Go is a robust system-level language used for programming across large-scale network servers and big distributed systems. It emerged as an alternative to C++ and Java for the app developers in the context of what Google needed for its network servers and distributed systems. There is a debate amongst programmers regarding Rust versus Go, and I intend to learn both this semester.
+
+##### Shortest Program to Generate Bus Error
+
+Creating an executable from `buserror.c` called `exec_buserror`, run the command `./exec_buserror` and find the following:
+
+```
+Bus error: 10
+```
+
+From [mmap documentation:](https://pubs.opengroup.org/onlinepubs/000095399/functions/mmap.html)
+
+```
+References within the address range starting at pa and continuing for len bytes
+to whole pages following the end of an object shall result in delivery of a SIGBUS
+signal.
+```
+
+Originally, I tried causing a bus error using a misaligned memory access, but this no longer works on x86 systems. Too smart!
+
+##### Adding 1.0 to a Large Float
+
+I expected that the floating point number that would not change under an addition of 1.0 had to be along the upper boundary of allowed float values in C, that is, it must be very large. According to Mozilla, the maximum value of a float in C is `3.402823466 * 1e38`. I tested this by adding a 1.0 to this value and sure enough, I got the same number back.
+
+##### User-Inputted String Copy
+
+Lastly, I decided to let the user input which string they want to the `strcopy` experiment. 
