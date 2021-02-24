@@ -1,6 +1,8 @@
-### CS333 Project 1 - Individual Work in C
+## CS333 Project 1 - Individual Work in C
 
-#### Tyler Hansen
+### Tyler Hansen
+
+#### Part I: Coding in C
 
 ##### Task 1:
 
@@ -56,7 +58,7 @@ We also note that the machine I am using is **(a)** little-endian, and we know t
 
 ##### Task 2:
 
-Creating an executable from `memoryaccess.c`, one finds that the output of this executable is the following (feel free to scroll past this ridiculously long code block):
+Creating an executable from `memoryaccess.c`, one finds that the output of this executable is the following (**PLEASE feel free to scroll past this ridiculously long code block**):
 
 ```
 0: 98
@@ -1968,3 +1970,77 @@ The aspects of the output that we are interested in are the fact that **(a)** we
 ```
 
 We find here the four bits storing the `integer` that is declared on line `19` of `memorytraverse.c`. This result is machine-dependent, however, so if you are reading this and want to try it for yourself it is not guaranteed that the same phenomenon occurs.
+
+##### Task 3:
+
+Without calling `free`, the program rapidly begins to take up more and more memory. It can be seen that it will climb to the top of your machine's memory usage.
+
+With `free` inside the loop, however, the program's memory usage remains static at 436KB until it is manually terminated.
+
+##### Task 4:
+
+Creating an executable from `structmemory.c` called `exec_structmemory`, run the command `./exec_structmemory` and find the following:
+
+```
+0: 49
+1: 74
+2: 61
+3: 6C
+4: 69
+5: 61
+6: 6E
+7: 00
+8: 00
+9: 00
+10: 00
+11: 00
+12: 00
+13: 00
+14: 00
+15: 00
+16: 00
+17: 00
+18: 00
+19: 00
+20: 00
+21: 00
+22: 00
+23: 57
+24: 08
+25: 00
+Size of CarlsenNakamura is 26
+```
+
+It is readily apparent that bytes 0-22 are allocated for the `char` array `CarlsenNakamura.opening`, byte `23` holds `57` which is "W" in hexadecimal -- so it is holding `CarlsenNakammura.side`. Lastly, we find that bytes `24` and `25` are holding `CarlsenNakamura.num_pawns`.
+
+What is interesting is that the `sizeof()` call returns `26`. Ying said in class that it snaps to even multiples of the largest data type; since it is a `short` in this case, everything is a multiple of 2.
+
+##### Task 5:
+
+Creating an executable from `strcpyexploration.c` called `exec_strcpyexploration`, run the command `./exec_strcpyexploration` and find the following:
+
+```
+Illegal instruction: 4
+```
+
+So, it looks like my compiler throws an illegal instruction error in the event that you try to copy a string that is slightly too long.
+
+#### Part II: Exploration of Other Languages
+
+##### Imperative / Object-Oriented Language: Ruby
+
+Developed in the mid-1990s, Ruby was designed by its creator Yukihiro “Matz” Matsumoto as a combination of his favorite languages to "form a new language that balanced functional programming with imperative programming." One interesting aspect of Ruby is that everything (including primitive types such as numbers) is an object, and so everything can have instance variables and methods. Ruby, while positioning itself as a general-purpose language has many applications like data analysis, prototyping, and proof of concepts. However, it is most often used in web applications; the largest implementation of Ruby is Ruby on Rails, the development framework built with Ruby. Ruby is a compiled language just like how Java works. Ruby syntax itself is not immediately compiled down to native machine code; instead, it is compiled into a set of bytecode instructions that are interpreted by a virtual machine. Ruby is completely open source and always free to copy, modify, and distrubute.
+
+##### Functional / Logic Language: Haskell
+
+Created in 1990, Haskell is purely functional programming language with some interesting properties: its statically typed, it has type inference, its "lazy" (meaning functions don't evaluate their arguments, so chains of functions can be fused together easily), it has concurrency and there are tons of packages available. From the Huffington Post, "While Haskell is a general purpose language that can be used in any domain and use case, it is ideally suited for proprietary business logic and data analysis, fast prototyping and enhancing existing software environments with correct code, performance and scalability." It has a native code compiler that is cross-platform and open source; open source contribution to Haskell comes by way of packages.
+
+##### Special Purpose Language: MySQL
+
+From their website: "MySQL is the world's most popular open source database. With its proven performance, reliability and ease-of-use, MySQL has become the leading database choice for web-based applications, used by high profile web properties including Facebook, Twitter, YouTube, Yahoo! and many more." It's secure, scaleable, and fast. MySQL is free and open-source software under the terms of the GNU General Public License, and is also available under a variety of proprietary licenses. MySQL was owned and sponsored by the Swedish company MySQL AB, which was bought by Oracle. MySQL was originally released on May 23rd, 1995. DBMS (database management systems) are slightly different in that the "compilation" is called "optimization" and an "execution plan" is sent to the database for, well, execution. The execution yields the result.
+
+#### Extensions to do:
+
+- Write up pararaphs on not just the three required languages for this project (one from each category) but also two additional so write them for Rust, Go, and then three more...
+- Find the float where you add one and get the same result back
+- Write the shortest program to generate a bus error

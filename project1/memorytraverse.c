@@ -1,16 +1,18 @@
-/**
-* Project 1 Memory Traverse Program: A simple program in which variables are declared
+/*
+Project 1 Memory Traverse Program: A simple program in which variables are declared
 and memory is accessed in sequence to explore the indices in which bytes are stored in memory.
-*
-* Tyler Hansen
-* CS333 Spring 2021
-* 02/24/2021 
+Expected result is a segmentation fault.
+
+Tyler Hansen
+CS333 Spring 2021
+02/24/2021 
 */
 
 #include <stdio.h>
 #include <stdlib.h>
         
-/* Simply declares variables of different types and assigns a character the address
+/* 
+Simply declares variables of different types and assigns a character the address
 of itself and then the memory indices are iterated through.
 */ 
 int main (int arg, char *argv[]) {

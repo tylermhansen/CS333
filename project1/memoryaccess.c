@@ -1,20 +1,22 @@
-/**
-* Project 1 Memory Access Program: A simple program in which variables are declared and memory accesses in C are explored.
-*
-* Tyler Hansen
-* CS333 Spring 2021
-* 02/24/2021 
+/*
+Project 1 Memory Access Program: A simple program in which variables 
+are declared and memory accesses in C are explored.
+
+Tyler Hansen
+CS333 Spring 2021
+02/24/2021 
 */
 
 #include <stdio.h>
 #include <stdlib.h>
         
-/* Simply declares variables of different types and uses a pointer combined with
+/* 
+Simply declares variables of different types and uses a pointer combined with
 C's sizeof() method to explore how many bytes are allocated in memory for each type
 and the endian-ness of my machine.
 */ 
 int main (int arg, char *argv[]) {
-  
+
   char var_char = 'c';
   short var_short = 32767;
   int var_int = 0x01234567;
