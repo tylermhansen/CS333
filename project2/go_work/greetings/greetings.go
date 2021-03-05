@@ -1,3 +1,7 @@
+/*
+ * Main file at /hello/hello.go
+ */
+
 package greetings
 
 import (
