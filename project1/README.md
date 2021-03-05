@@ -2073,4 +2073,4 @@ I expected that the floating point number that would not change under an additio
 
 ##### User-Inputted String Copy
 
-Lastly, I decided to let the user input which string they want to the `strcopy` experiment. 
+Lastly, I decided to let the user input which string they want to the `strcopy` experiment.

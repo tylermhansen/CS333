@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+		<title>Project 2 | CS 333</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+		<meta name="author" content="Ying Li">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+		<link  rel="stylesheet" href="/yingli/teaching/course.css">
+		<!--link rel="apple-touch-icon"  href="icons/favicon.png"-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  
+  <body>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="container-fluid">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				    <span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="index.html">CS 333</a>
+				</div>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li class="zero-bottom-margin"><a href="topics.html">Topics</a></li>
+						<li class="zero-bottom-margin"><a href="#notes">Notes</a></li>
+						<li class="zero-bottom-margin dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Homework<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li id="h1"><a href="h1.html">Homework 1</a></li>
+								<li id="h2"><a href="h2.html">Homework 2</a></li>
+								<li id="h2"><a href="h3.html">Homework 3</a></li>
+								<li id="h2"><a href="h4.html">Homework 4</a></li>
+								<li id="h2"><a href="h5.html">Homework 5</a></li>
+								<li id="h2"><a href="h6.html">Homework 6</a></li>
+								<li id="h2"><a href="h7.html">Homework 7</a></li>
+								<li id="h2"><a href="h8.html">Homework 8</a></li>
+								<li id="h2"><a href="h9.html">Homework 9</a></li>
+						  </ul>
+						</li>
+						<li class="zero-bottom-margin dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li id="h1"><a href="p1.html">Project 1</a></li>
+								<li id="h2"><a href="p2.html">Project 2</a></li>
+								<li id="h2"><a href="p3.html">Project 3</a></li>
+								<li id="h2"><a href="p4.html">Project 4</a></li>
+								<li id="h2"><a href="p5.html">Project 5</a></li>
+								<li id="h2"><a href="p6.html">Project 6</a></li>
+								<li id="h2"><a href="p7.html">Project 7</a></li>
+								<li id="h2"><a href="p8.html">Project 8</a></li>
+								<li id="h2"><a href="p9.html">Project 9</a></li>
+						  </ul>
+						</li>
+						<li class="zero-bottom-margin"><a href="#references">Reference Materials</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+		
+		<div class="container">	 
+			<div class="page-header">
+				<h1>
+				<small>CS 333 Programming Languages</small><br>
+				<span>Project 2</span>
+				</h1>
+			</div>
+
+		<script>$(function(){$("#index").addClass("active")})</script>
+
+    <h2>Lexical Analysis</h2>
+		
+    <p>The first thing we have to do with any programming language is build a lexical analyzer 
+			that converts a text string into a series of tokens. There are lots of tools for handling 
+			this. For this assignment, you'll make use of the <em>Flex</em> lexical analysis tool and 
+			build a few different parsers.</p>
+			
+    <h3>Tasks</h3>
+		<p>Flex is an open source lexical analysis tool. The way it works is you first create an input 
+			file that defines symbols and production rules that describe how to parse a text file. Then 
+			you run Flex and it produces a C file. You can then compile the C file and run it on some input.</p>
+
+    <p>As an example, consider the following <samp>Hello World</samp> program for Flex. The line 
+			beginning with <code>blah</code> defines a rule that says to replace instances of <code>blah</code> 
+			with <code>hello world</code>.</p>
+
+    <pre>
+			/**
+			 * Hello World: replace "blah" with "hello world"
+			 */
+			 
+			 %%
+			 
+			 blah    printf("hello world");
+			 
+			 %%
+			 
+			 int main ( int argc, char *argv[] ) {
+				 
+				 yylex();
+			 
+			 }
+    </pre>
+		
+    <p>If you type the above into a file called <kbd>replace.yy</kbd> and then execute the following 
+			commands, you get the resulting behavior. </p>
+
+    <code> $ flex replace.yy </code> </br>
+    <code> $ gcc -o repl lex.yy.c -lfl </code></br>
+		<code> $ echo "blah and another blah" | ./repl </code></br>
+		<code> hello world and another hello world </code></br></br>
+		
+		<p>The <a href="http://dinosaur.compilertools.net/flex/">documentation for flex</a> provides many 
+			more examples and a description of the syntax.</p>
+			
+		<p>Note that flex is based on regular expressions, which are similar to the extended BNF notation 
+			we've gone over in class. There are lots of <a href="http://www.regular-expressions.info">
+			documentation for regular expressions</a>, and they can be very useful in many situations.</p>
+		
+		<ol>
+			<li><p> Using flex, make a program called <kbd>encode.yy</kbd> that takes any character in a-z or A-Z 
+				and shifts it 13 spaces forward in the alphabet, with wraparound from z back to a. Run it on a 
+				text file of your choice. You can test that it is working correctly by running the output of 
+				<kbd>encode.yy</kbd> through encode again. The result should be the original document.</p>
+			</li>
+			
+			<li><p>Using Flex, make a program that reads in a text file and tells you not only the number 
+				of rows and characters, but also how many of each vowel <samp>[a, e, i, o, u]</samp> are in 
+				the file.</p>
+			</li>	
+			
+			<li><p>Make a program that strips an html file of all tags and comments. It should also strip 
+				the file of all whitespace except for a blank line wherever there used to be a 
+				<code>&lt;p&gt;</code> tag. Test it on this web page. Here is a 
+				<a href="projects/p2.txt">downloadable version</a>.</p>
+				
+				<p>Note that this is challenging to do in a way that make the output reasonably formatted. 
+					As an extension, you can make your program do more sophisticated things like replace 
+					<code>&amp;gt;</code> with <code>&gt;</code>.</p>
+			</li>	
+			
+			<li><p>Implement a parser for Clite. For now, the output of your program should just be a 
+				sequence of strings, one per line. Please use the following strings.</p>
+				
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>Integer-&lt;value&gt;</td>
+							<td>A sequence of one or more digits.</td>
+						</tr>
+						<tr>
+							<td>Float-&lt;value&gt;</td>
+							<td>An integer, a dot, and another integer.</td>
+						</tr>
+						<tr>
+							<td>Keyword-&lt;word&gt;</td>
+							<td>if | else | while | for | int | float</td>
+						</tr>
+						<tr>
+							<td>Identifier-&lt;name&gt;</td>
+							<td>Legal names/identifiers.</td>
+						</tr>
+						<tr>
+							<td>Assignment</td>
+							<td> = </td>
+						</tr>
+						<tr>
+							<td>Comparison-&lt;symbol&gt;</td>
+							<td>== | &lt; | &gt; | &lt;= | &gt;=</td>
+						</tr>
+						<tr>
+							<td>Operator-&lt;symbol&gt;</td>
+							<td>+ | - | * | / </td>
+						</tr>
+						<tr>
+							<td>Open-bracket</td>
+							<td> { </td>
+						</tr>
+						<tr>
+							<td>Close-bracket</td>
+							<td> } </td>
+						</tr>
+						<tr>
+							<td>Open-paren</td>
+							<td> ( </td>
+						</tr>
+						<tr>
+							<td>Close-paren</td>
+							<td> ) </td>
+						</tr>
+					</tbody>
+				</table>	
+			
+			<p>Ideally, your program should also ignore comments. You can test your program on this 
+				<a href="p2-example.c">example</a>. You should get something 
+				like <a href="p2-example-result.txt">this result</a>.</p>	
+		</ol>	
+		
+		<h3>Extensions</h3>
+		<ul>
+			<li> Get comments working properly. Be sure to try out a variety of examples.</li>
+			<li> Make the encoder more complex.</li>
+			<li> Make the program for analyzing a document to some more interesting things. </li>
+		</ul>	
+		
+				
+		<p class="lastMod"><small>&copy; 2016 Ying Li. Page last modified:
+			<script>document.write(Date(document.lastModified));</script>
+			<a href="http://validator.w3.org/check?uri=referer">.</a></small></p>
+
+		</div> <!-- container -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </body>
+</html>

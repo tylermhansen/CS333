@@ -2,9 +2,10 @@
 # CS333 Spring 2021 -- Programming Languages
 # 03/4/2021
 
+# dogfact.rb: Generates as many random dog facts as the user wants! 
+
 # Require the HTTP gem:
 require "http"
-
 
 loop do 
     # Send a GET request to the Dog Facts API (https://github.com/DukeNgn/Dog-facts-API)
