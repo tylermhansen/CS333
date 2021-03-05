@@ -1,3 +1,10 @@
+/**
+ * Skye Rhomberg, Sawyer Strong, Tyler Hansen
+ * CS333 Project 2
+ * Spring 2021
+ * This is the main file for this library
+ */
+
 package main
 
 import (
