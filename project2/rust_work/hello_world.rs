@@ -1,6 +1,5 @@
-
-
-
+// Tyler Hansen, Sawyer Strong, Skye Rhomberg
+// CS333 Project 2 
 
 fn main() {
     // Statements here are executed when the compiled binary is called
