@@ -9,8 +9,7 @@ cstk.c: Describes the Stack data structure.
 */
 
 #include "cstk.h"
-
-extern int CSTK_MAX = 50;
+int CSTK_MAX = 50;
 
 /*
  * Function:  stk_create 
