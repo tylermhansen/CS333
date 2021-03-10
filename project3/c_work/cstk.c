@@ -1,5 +1,5 @@
 /* 
-Tyler Hansenå
+Tyler Hansen
 CS333 Spring 2021 -- Programming Languages
 3/8/2021
 */
@@ -20,10 +20,12 @@ int CSTK_MAX = 50;
  *
  * returns: the new Stack object.
  */
-Stack *stk_create(int size) 
+Stack *stk_create(int size)
 {
     Stack *stack = (Stack*)malloc(sizeof(Stack));
-    stack->top = size;
+    stack->top = 0;
+    stack->stack = (int *)malloc(size * sizeof(int));
+    return stack; 
 }
 
 /*
@@ -39,7 +41,7 @@ Stack *stk_create(int size)
 void stk_push(Stack *S, int n)
 {
     if (S->top < CSTK_MAX)
-        S->stack[S->top++] = n ;
+        S->stack[S->top++] = n;
     else
         fprintf(stderr, "Error: the stack object is full.\n");
 }
@@ -56,13 +58,13 @@ void stk_push(Stack *S, int n)
  */
 int stk_pop(Stack *S)
 {
+    int val = S->stack[S->top];
     if (S->top == 0)
         fprintf(stderr, "Error: the stack object is empty.\n");
     else{
-        int val = S->stack[S->top];
         S->top--;
-        return val;
     }
+    return val;
 }
 
 /*
@@ -79,7 +81,7 @@ int stk_pop(Stack *S)
 void stk_display(Stack *S, int n)
 {
 if (n == 1) {
-    for (int j = S->top; j >= 0; j--){
+    for (int j = S->top - 1; j >= 0; j--){
         printf("%d", S->stack[j]);
     }
     printf("\n");
@@ -104,6 +106,5 @@ if (n == 1) {
 void stk_destroy(Stack *S)
 {
     free(S->stack);
-    free(S->top);
     free(S);
 }
