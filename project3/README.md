@@ -41,11 +41,42 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
                       Output is rather verbose.
                       Usage: "ruby task3.rb"
 └── rust_work       : Tyler Hansen, Sawyer Strong, and Skye Rhomberg's work in Rust for Project 3.
+├── Makefile        : A simple Makefile for compiling all of the Rust files for this week's Rust code.
+                      Usage: Run the command "make" in the directory "rust_work/", then execute whichever executable you want!
+├── task1.rs        : A program designed to showcase identifier rules for the language as well as scoping rules.
+                      Output: 10
+├── task2.rs        : A program designed to perform a binary search on an array in the Rust programming language.
+                      Output:
+                      Found 6 at index 4
+                      Found 2 at index 0 using a recursive search
+                      Sorted list in ascending order:
+                      2
+                      3
+                      5
+                      6
+                      8
+                      12
+                      Found 5 at index 2 using a recursive search
+└── task3.rs        : A program to showcase different aggregate and basic types as well as the way operators behave within Rust.
+                      Output:
+                      Ref is 13
+                      Changed X to 200
+                      Addition23
+                      Multiplication 46
+                      Modulo Operator 4
+                      Division 2
+                      Division -4
 ```
 
 #### Extensions:
 
-- Note that we did the project in **three** selected languages, not just one or two (Go, Rust, and Ruby).
+##### C:
+
 - Created my own Makefile for my C code after learning `make`, making running the code way easier. The user just has to execute "make" into the terminal in this directory, then they can immediately execute "./cstktest" and voila, the code in C for this week is compiled and demonstrated.
+
+##### Other Languages:
+
+- Note that we did the project in **three** selected languages, not just one or two.
 - Implemented both recursive and iterative binary search in Ruby in `task2.rb`. Command-line input and then execution time comparison between the two.
 - Implemented an insertion sort in Rust.
+- Created a Rust Makefile such that a user just has to execute "make" into the terminal in this directory, then they can immediately execute whichever rust file they choose since they are all compiled for them.
