@@ -2,7 +2,7 @@
 # CS333 Spring 2021 -- Programming Languages
 # 03/9/2021
 
-# task2.rb: demonstrates an implementation on binary search in the Ruby programming language.
+# task2.rb: demonstrates an implementation of binary search in the Ruby programming language.
 # Usage: ruby task2.rb d arr, ex. ruby task2.rb 42 1 2 3 4 5 6
 
 
