@@ -29,6 +29,10 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
 │   ├── cstk.h      : Declares the basic functions of the Stack data structure.
 │   └── cstktest.c  : Ying's test code for the Stack.
 ├── go_work         : Tyler Hansen, Sawyer Strong, and Skye Rhomberg's work in Go for Project 3.
+│   ├── task1.go    : Variables, Scoping in Go
+│   ├── task2.go    : Binary Search in Go
+│   └── task3.go    : Go's Type System
+
 ├── ruby_work       : Tyler Hansen, Sawyer Strong, and Skye Rhomberg's work in Ruby for Project 3.
 │   ├── task1.rb    : Demonstrates the rules for identifier naming, variable declarations and identifier scoping of the Ruby programming language.
                       Output is rather verbose.
@@ -80,3 +84,4 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
 - Implemented both recursive and iterative binary search in Ruby in `task2.rb`. Command-line input and then execution time comparison between the two.
 - Implemented an insertion sort in Rust.
 - Created a Rust Makefile such that a user just has to execute "make" into the terminal in this directory, then they can immediately execute whichever rust file they choose since they are all compiled for them.
+- Used a built-in binary search function in Go and compared it to our implementation
