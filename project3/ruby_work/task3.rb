@@ -2,7 +2,8 @@
 # CS333 Spring 2021 -- Programming Languages
 # 03/9/2021
 
-# task1.rb: demonstrates the rules for identifier naming, variable declarations and identifier scoping of the Ruby programming language.
+# task3.rb: Demonstrates all of the basic built-in types and how to construct aggregate types. 
+#           Demonstrates which of the standard suite of operators (+-/*%) manipulate which types and what the resulting type of each operation is.
 
 # Define two constants MISSION_CONTROL and Vessel. In Ruby, constants start with capital letters. Also note that Ruby is dynamically-typed!
 MISSION_CONTROL = "Houston"
@@ -11,7 +12,7 @@ Vessel = "SpaceX Dragon"
 # Define a global variable C. In Ruby, a global variable starts with a dollar sign $.
 $C = 2.99e8
 
-# Define a class "Exoplanet"
+# Define a class "Exoplanet"; this is how we construct aggregate types in Ruby.
 class Exoplanet
     # Define a class variable number_of_stars. In Ruby, class variables start with two "at" signs @@.
     @@number_of_stars = 41 
@@ -52,7 +53,7 @@ class Exoplanet
     attr_reader :star_size, :star_location, :star_id
 end
 
-# Define a class "Singularity"
+# Define a class "Singularity"; this is how we construct aggregate types in Ruby.
 class Singularity
     # Define a class variable photos_captured
     @@photos_captured = 0
@@ -85,28 +86,90 @@ alpha = Exoplanet.new(4242, 10000000, "SLATFATF")
 # Create a new Singularity object named beta
 beta = Singularity.new(420000000, 22222, "DFTBAT")
 
-# Print out the global variable in two different classes to see that it is the same.
-alpha.print_C
-beta.print_C
+# In Ruby, there are Numbers, Booleans, Strings, Hashes, Arrays, and Symbols. Every data type is based on a class as Ruby is a pure Object-Oriented language. 
 
-# Create a new Expoplanet object named alpha_two
-alpha_two = Exoplanet.new(24, 999, "TIRED")
+# Ruby can handle both integers...
+astronauts_aboard = 7
 
-# Print out the class variable in two different objects represented by the same class to show that it is shared amongst instances.
-alpha.add_star
-alpha_two.add_star
+# ... and floats...
+average_age = 26.42
 
-puts "Alpha has distance of #{alpha.star_location} while AlphaTwo has distance of #{alpha_two.star_location}"
+# Ruby, like most languages, supports strings...
+statement = "This is a neat string! This time I'm using double quotes, but single quotes work too.\n"
+print statement
+
+print "--------------\n"
+
+# Ruby has booleans that present one bit (true or false): 
+if true
+    puts "true is True!"
+  else
+    puts "true is False!"
+  end
+    
+  if nil
+    puts "nil is True!"
+  else
+    puts "nil is False!"
+  end
+    
+  if 0
+    puts "0 is True!"
+  else
+    puts "0 is False!"
+  end
+
+  if 1 
+    puts "1 is True!"
+  else
+    puts "1 is False!"
+  end
+
+# Note that there is no inherent "truth" to 0 or 1 as integers. 
+
+print "--------------\n"
+
+# Ruby also supports "hashes," which holds key-value pairs like a dictionary in Python. 
+hsh = colors = { "green" => 0x0f0, "red" => 0xf00, "blue" => 0x00f } 
+hsh.each do |key, value| 
+    print key, " is ", value, "\n"
+end
+
+print "--------------\n"
+
+# Ruby has arrays, which we are quite familiar with: 
+arr = [ "I'm the first element!", "This", "is", "an", "array", "with numbers too", 3.14, "I'm the last element of the array!" ] 
+arr.each do |i| 
+    puts i 
+end
+
+print "--------------\n"
+
+# Lastly, Ruby has a data type called a "symbol," which are light-weight strings. A symbol is preceded by a colon (:). 
+# They are used instead of strings because they can take up much less memory. Symbols have better performance.
+symbs = {:tk => "Take a break!", :dw => "Do some work!", :gs => "Go to sleep!"} 
+  
+puts symbs[:tk] 
+puts symbs[:dw] 
+puts symbs[:gs] 
+
+print "--------------\n" 
+
+# Just like python, we can use + for both addition and concatenation: 
+puts "Addition in ruby looks like #{astronauts_aboard + average_age}\n"
+puts "Cheeky " + "Concatentation"
+
+# We also have subraction, division, multiplication, and modulo (remainder):
+puts 42 - 21
+puts 42 / 21
+puts 42 * 21
+puts 42 % 9
+
+# If we do any of these operations with an integer and a float, the result is a float.
+puts 42 - 21.0
 
 
 
 
 
 
-
-
-
-
-
-
-        

@@ -14,7 +14,6 @@ cstk.h: Declares the basic functions of the Stack data structure.
 #include <stdlib.h>
 #include <string.h>
 
-
 extern int CSTK_MAX;
 
 typedef struct Stack {
