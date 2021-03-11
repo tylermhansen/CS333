@@ -5,8 +5,13 @@
 #### Directory Guide
 
 ```
-/c_work
+.
+├── Makefile : Part of an extension for this week. Allows user to execute "make" into the terminal in this directory, then they can immediately execute "./cstktest"
 ├── README.md <-- You are here! You are here! (If you have the README open, of course. In GitHub, you will see this if you are just in the /c_work directory.)
+├── cstk.c : Describes the Stack data structure.
+├── cstk.h : Test code for Stack.
+├── cstktest
+├── cstktest.c
 ```
 
 #### Foreword
