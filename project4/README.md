@@ -27,6 +27,9 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
 │   ├── factorial.c
 │   └── quicksort.c
 ├── go_work
+│   ├── task1.go
+│   ├── task2.go
+│   └── task3.go
 ├── ruby_work
 │   ├── Gemfile
 │   ├── task1.rb
