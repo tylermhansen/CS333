@@ -7,7 +7,7 @@
 # Require the HTTP gem:
 require "http"
 
-# I decided to use this as an opportunity to clean up my dog fact gejerator ode from week 2. 
+# I decided to use this as an opportunity to clean up my dog fact generator code from week 2. 
 
 # Here, I am saving a function to a variable without calling that function. 
 dogfact = lambda {HTTP.get("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1").to_s}
