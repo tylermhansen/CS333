@@ -19,7 +19,6 @@ type Node struct {
 // List has a tail to make appending faster
 type SLList struct {
     Head *Node
-    Tail *Node
     Size int
 }
 
@@ -29,7 +28,7 @@ type Data interface{}
 
 // Create list, return a pointer to it
 func NewSLList() *SLList {
-    return &SLList{nil,nil,0}
+    return &SLList{nil,0}
 }
 
 /**
@@ -41,9 +40,6 @@ func (l *SLList) Push(d Data) {
     n := &Node{d,l.Head}
     // Reassign head, tail
     l.Head = n
-    if l.Tail == nil {
-        l.Tail = n
-    }
     // Increment Size
     l.Size++
 }
@@ -57,30 +53,27 @@ func (l *SLList) Pop() Data {
     d := l.Head.Data
     // Reassign head and tail
     l.Head = l.Head.Next
-    if l.Head == nil {
-        l.Tail = nil
-    }
     // Decrement size
     l.Size--
     return d
 }
 
 /**
- * Append: add d to Tail of list
+ * Append: add d to end of list
  * Input: d Data : data to be appended
  */
 func (l *SLList) Append(d Data) {
-    // Just use push for empty list
-    if l.Tail == nil {
+    if l.Head == nil {
         l.Push(d)
-    } else {
-        // New node, tail and old last element point to it
-        n := &Node{d,nil}
-        l.Tail.Next = n
-        l.Tail = n
-        // Increment size
-        l.Size++
+        return
     }
+    tmp := &l.Head
+    for (*tmp).Next != nil {
+        tmp = &(*tmp).Next
+    }
+    n := &Node{d,nil}
+    (*tmp).Next = n;
+    l.Size++
 }
 
 /**
@@ -125,10 +118,6 @@ func (l *SLList) Delete(index int) Data {
     // Return data, remove node
     r := (*n).Data
     *n = (*n).Next
-    // Reset tail if needed
-    if l.Head == nil {
-        l.Tail = nil
-    }
     // Decrement size
     l.Size--
     return r
@@ -142,7 +131,7 @@ func (l *SLList) Delete(index int) Data {
  */
 func (l *SLList) Insert(index int, d Data) {
     // Use append for empty list
-    if l.Tail == nil {
+    if index == l.Size {
         l.Append(d)
         return
     }
@@ -174,7 +163,6 @@ func (l *SLList) GetSize() int {
  */
 func (l *SLList) Clear() {
     l.Head = nil
-    l.Tail = nil
     l.Size = 0
 }
 
