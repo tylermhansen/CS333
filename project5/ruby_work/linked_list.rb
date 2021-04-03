@@ -88,19 +88,15 @@ class LinkedList
         self.length = 0
 	end
 
-    # Finds first occurence of predicate.
-	# Complexity: O(n).
-	def find_first &predicate
-		return nil unless block_given?
 
-		current = self.head
-		while current
-			return current if predicate.call(current)
-			current = current.next
-		end
-	end
-
-
+    # Function: remove
+    # ----------------------
+    # The constructor for a Node object.
+    # 
+    # Parameters:
+    # value -- The data in the node to remove.
+    #
+    # Returns: NA
     def remove(value)
         if self.head.data == value
           self.head = self.head.next
@@ -111,6 +107,15 @@ class LinkedList
         self.length -= 1
     end
 
+    # Function: find
+    # ----------------------
+    # Get a node by value.
+    # 
+    # Parameters:
+    # value -- The data in the node to seek.
+    #
+    # Returns:
+    # node -- The node with the found value or false
     def find(value)
         node = self.head
         return false if !node.next
