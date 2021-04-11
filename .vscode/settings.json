@@ -3,6 +3,14 @@
         "stdlib.h": "c",
         "queue": "c",
         "stack": "c",
-        "random": "c"
+        "random": "c",
+        "wordcounter.h": "c",
+        "array": "c",
+        "iterator": "c",
+        "string": "c",
+        "string_view": "c",
+        "vector": "c",
+        "algorithm": "c",
+        "signal.h": "c"
     }
 }
