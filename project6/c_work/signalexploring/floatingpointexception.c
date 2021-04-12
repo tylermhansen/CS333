@@ -1,5 +1,12 @@
-// CPP program to illustrate
-// User-defined Signal Handler
+/* 
+Tyler Hansen
+CS333 Spring 2021 -- Programming Languages
+04/09/2021
+*/
+
+/* 
+floatingpointexception.c: Demonstrates user-handled floating point exception signal.
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
