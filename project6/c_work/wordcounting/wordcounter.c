@@ -5,7 +5,7 @@ CS333 Spring 2021 -- Programming Languages
 */
 
 /* 
-linked_list.c: Describes a linked list data structure.
+wordcounter.c: Describes a word counter object.
 */
 
 #include "wordcounter.h"
