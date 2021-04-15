@@ -38,11 +38,19 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
 │       ├── wctest.c
 │       ├── wordcounter.c
 │       └── wordcounter.h
-└── ruby_work
-    ├── exceptions.rb
-    ├── fileio.rb
-    ├── test_text.txt
-    └── wordcounter.rb
+├── ruby_work
+│   ├── exceptions.rb
+│   ├── fileio.rb
+│   ├── test_text.txt
+│   └── wordcounter.rb
+└── rust_work
+    ├── Makefile
+    ├── error_handling.rs
+    ├── fileio.rs
+    ├── hello.txt
+    ├── rust_readme06.txt
+    ├── test.txt
+    └── word_counter.rs
 ```
 
 #### Compilation/Run Instructions:
