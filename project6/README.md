@@ -25,7 +25,6 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
 
 ```
 /project6
-├── README.md
 ├── c_work
 │   ├── signalexploring
 │   │   ├── Makefile
@@ -38,6 +37,9 @@ I highly recommend that this repository is [viewed on GitHub](https://github.com
 │       ├── wctest.c
 │       ├── wordcounter.c
 │       └── wordcounter.h
+├── go_work
+│   ├── wctest.txt
+│   └── wordCounter.go
 ├── ruby_work
 │   ├── exceptions.rb
 │   ├── fileio.rb
@@ -107,6 +109,11 @@ ruby filename.rb
 
 - `/wordcounter.c`: Implements all of the necessay methods for a WordCounter object. Outputs: None
 - `/wordcounter.h`: Contains the function headers for describing a WordCounter object. Outputs: None
+
+##### project6/go_work
+
+- `wctext.txt`: Ying's provided text test file. No output.
+- `wordCounter.go`: The WordCounter implemented in Go. Usage: `./wordCounter <filename>`. Outputs: The same as the other word counters for `wctext.txt`.
 
 ##### project6/ruby_work
 
