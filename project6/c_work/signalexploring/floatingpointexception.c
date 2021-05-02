@@ -1,37 +1,33 @@
 /* 
 Tyler Hansen
 CS333 Spring 2021 -- Programming Languages
-04/09/2021
+04/30/2021
 */
 
 /* 
-floatingpointexception.c: Demonstrates user-handled floating point exception signal.
+timepercall.c: Explores the time that it takes (on average) to allocate a certain amount of memory.
 */
 #include <stdio.h>
 #include <stdlib.h>
-#include <signal.h>
+#include <time.h>
 
-#define SIGHUP  1   /* Hangup the process */ 
-#define SIGINT  2   /* Interrupt the process */ 
-#define SIGQUIT 3   /* Quit the process */ 
-#define SIGILL  4   /* Illegal instruction. */ 
-#define SIGTRAP 5   /* Trace trap. */ 
-#define SIGABRT 6   /* Abort. */
-#define SIGFPE  8   /* Floating Point Exception */
-#define SIGSEGV 11  /* Segmentation Fault */
-  
-// Handler for SIGFPE, caused by a floating point exception like dividing by 0.
-void handle_sigfpe(int sig){
-    printf("\nCaught Floating point signal.\n");
-}
-
+// Main function calculates the average time to allocate different ammounts of memory and prints these to the console.
 int main()
 {
-    signal(SIGFPE, handle_sigfpe);
-    printf("Heading to divide 42 by zero...\n");
-    double x = 0.0;
-    double illegal = 42 / x;
-    printf("%f", illegal);
-    printf("If we got here, it means that the program continued after the floating point error occurred.\n");
+    // Define variables average, start, end, and cpu_time_used for use with time.h
+    float average = 0.0;
+    clock_t start, end;
+    double cpu_time_used;
+
+    // Loop through a ton of different malloc times
+    for(int i = 16; i < 0x100000; i = i * 2){
+        start = clock();
+        double *vect = malloc(i);
+        end = clock();
+        cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+        printf("%f", cpu_time_used);
+    }
+
+
     return 0;
 }
