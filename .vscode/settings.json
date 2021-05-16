@@ -11,6 +11,8 @@
         "string_view": "c",
         "vector": "c",
         "algorithm": "c",
-        "signal.h": "c"
+        "signal.h": "c",
+        "mergesortlib.h": "c",
+        "string.h": "c"
     }
 }
